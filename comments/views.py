@@ -4,9 +4,22 @@ from .models import Inquiry
 from .serializers import InquirySerializer
 from .permissions import IsSuperAdminOnly
 from rest_framework import generics
+from accounts.premissions import IsSectorAdminOrSuperAdmin
 
 class InquiryViewSet(generics.ListCreateAPIView):
-    queryset = Inquiry.objects.all().order_by("-id")
     serializer_class = InquirySerializer
-
     permission_classes = [IsSuperAdminOnly]
+    
+    def get_queryset(self):
+        user = self.request.user
+        queryset = Inquiry.objects.all().order_by("-id")
+        
+        # superadmin يرى كل البيانات
+        if user.role == "superadmin":
+            return queryset
+        
+        # admin يرى فقط استفسارات قطاعه
+        if user.role == "admin" and user.sector:
+            return queryset.filter(sector=user.sector)
+        
+        return queryset.none()

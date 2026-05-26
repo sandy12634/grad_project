@@ -39,10 +39,12 @@ class IsSectorAdminOrSuperAdmin(permissions.BasePermission):
         )
 
     def has_object_permission(self, request, view, obj):
-
         # superadmin يعمل أي شيء
         if request.user.role == "superadmin":
             return True
 
         # admin فقط ضمن نفس القطاع
+        if not hasattr(obj, 'sector'):
+            return False
+        
         return obj.sector == request.user.sector

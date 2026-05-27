@@ -80,26 +80,43 @@ WSGI_APPLICATION = 'hub.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
-
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+"""
 
- 
-"""DATABASES = {
+""""" 
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'homshub',      # The name of the DB you created in Postgres
+        'NAME': 'homshub_new',      # The name of the DB you created in Postgres
+        'USER': 'postgres',      # Your database username
+        'PASSWORD': '1234',  # Your database password
+        'HOST': 'localhost',         # Set to server IP for remote databases
+        'PORT': '5432',              # Default PostgreSQL port
+    }}
+"""
+
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'homshub_new',      # The name of the DB you created in Postgres
         'USER': 'postgres',      # Your database username
         'PASSWORD': '1234',  # Your database password
         'HOST': 'localhost',         # Set to server IP for remote databases
         'PORT': '5432',              # Default PostgreSQL port
     }
 }
-"""
+    
+    
+    
+
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
 
@@ -175,6 +192,6 @@ REST_FRAMEWORK = {
 
 
 #الربط الذي سيتخدمه الفرونت اند للوصول للصورة 
-MEDIA_URL ='/media/'
+MEDIA_URL ='api/media/'
 #المكان الحقيقي على الهارد ديسك الذي ستحفظ فيه الملفات 
 MEDIA_ROOT= os.path.join(BASE_DIR, 'media/')

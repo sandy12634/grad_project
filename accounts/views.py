@@ -2,7 +2,7 @@ from rest_framework import viewsets
 from .premissions import IsSuperAdmin, IsAdminOrSuperAdmin, IsSectorAdminOrSuperAdmin
 from rest_framework_simplejwt.views import TokenObtainPairView
 from .serializers import MyTokenObtainPairSerializer
-
+from rest_framework.permissions import AllowAny
 
 
 class MyTokenObtainPairView(TokenObtainPairView):
@@ -29,4 +29,4 @@ class InquiryViewSet(viewsets.ModelViewSet):
             return [IsAdminOrSuperAdmin()]
             
         # 4. العرض (List): للآدمن وللسوبر آدمن
-        return [IsAdminOrSuperAdmin()]
+        return [AllowAny()]

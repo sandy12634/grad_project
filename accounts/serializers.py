@@ -49,6 +49,11 @@ class UserSerializer(serializers.ModelSerializer):
     def validate_sector(self, value):
         """منع الأدمن من محاولة إضافة شخص في قطاع غير قطاعه"""
         user = self.context['request'].user
+        if not user or not user.sector:
+    
+    
+         return value
+
         if user.role == 'admin' and value != user.sector:
             raise serializers.ValidationError("لا يمكنك إضافة أو تعديل مستخدم خارج قطاعك.")
         return value

@@ -10,6 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
+
+
+
 from pathlib import Path 
 from datetime import timedelta
 import os
@@ -80,14 +83,14 @@ WSGI_APPLICATION = 'hub.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
-"""
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-"""
+
 
 """"" 
 DATABASES = {
@@ -96,25 +99,44 @@ DATABASES = {
         'NAME': 'homshub_new',      # The name of the DB you created in Postgres
         'USER': 'postgres',      # Your database username
         'PASSWORD': '1234',  # Your database password
-        'HOST': 'localhost',         # Set to server IP for remote databases
+        'HOST': '127.0.0.1',         # Set to server IP for remote databases
         'PORT': '5432',              # Default PostgreSQL port
     }}
 """
 
-
-
+"""
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'homshub_db',  # اسم القاعدة التي سننشئها في XAMPP بعد قليل
+        'USER': 'root',        # اسم المستخدم الافتراضي لبرنامج XAMPP
+        'PASSWORD': '',        # اتركيها فارغة تماماً بدون أي مسافة بين علامتي التنصيص
+        'HOST': '127.0.0.1',   # تعني السيرفر المحلي على جهازك
+        'PORT': '3306',        # المنفذ الافتراضي لـ MySQL
+    }
+}
+"""
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'homshub_new',      # The name of the DB you created in Postgres
-        'USER': 'postgres',      # Your database username
-        'PASSWORD': '1234',  # Your database password
-        'HOST': 'localhost',         # Set to server IP for remote databases
+        'NAME': 'neondb',      # The name of the DB you created in Postgres
+        'USER': 'neondb_owner',      # Your database username
+        'PASSWORD': 'npg_JvW7BhqwOn5R',  # Your database password
+        'HOST': 'ep-gentle-feather-aqr99qeh-pooler.c-8.us-east-1.aws.neon.tech',         # Set to server IP for remote databases
         'PORT': '5432',              # Default PostgreSQL port
-    }
-}
+        'OPTIONS': {
+            'sslmode': 'requir',
+        },
+    }}
+    """
     
-    
+   
+   
+   
+   
+   
+   
     
 
 # Password validation
@@ -195,3 +217,12 @@ REST_FRAMEWORK = {
 MEDIA_URL ='api/media/'
 #المكان الحقيقي على الهارد ديسك الذي ستحفظ فيه الملفات 
 MEDIA_ROOT= os.path.join(BASE_DIR, 'media/')
+
+
+
+CROS_ALLOWED_ORIGIN =[ "https://homshub.vercel.app"]
+
+
+
+
+

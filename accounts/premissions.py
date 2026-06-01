@@ -48,3 +48,5 @@ class IsSectorAdminOrSuperAdmin(permissions.BasePermission):
             return False
         
         return obj.sector == request.user.sector
+    
+    

@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-d#8o1=ler6r65#(6x5urpv)#m!&m*yp(bzf$i1clds8$s62u4g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['sandy11.pythonanywhere.com','localhost','127.0.0.1','*']
 
 
 # Application definition
@@ -220,8 +220,7 @@ MEDIA_ROOT= os.path.join(BASE_DIR, 'media/')
 
 
 
-CROS_ALLOWED_ORIGIN =[ "https://homshub.vercel.app"]
-
+CORS_ALLOW_ALL_ORIGINS =True
 
 
 

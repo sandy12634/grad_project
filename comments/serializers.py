@@ -8,4 +8,4 @@ class InquirySerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Inquiry
-        fields = ['id', 'name', 'sector','sector_display', 'question', 'created_at']
+        fields = ['id', 'name', 'sector','sector_display', 'question', 'answer','status','created_at']

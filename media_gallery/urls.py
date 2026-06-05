@@ -3,7 +3,7 @@ from rest_framework.routers import DefaultRouter
 from .views import MediaViewSet
 
 router = DefaultRouter()
-router.register("media_gallery", MediaViewSet)
+router.register("media", MediaViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

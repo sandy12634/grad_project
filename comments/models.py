@@ -26,8 +26,7 @@ class Inquiry(models.Model):
         default="pending"
     )  # حالة السؤال وتبدأ تلقائياً بـ "pending"
     
-    # حقل التاريخ (تمت تسميته date ليطابق TypeScript)
-    created_at = models.DateTimeField()  
+  
  # إضافة ميزة ذكية للـ save لتغيير الحالة تلقائياً عند إضافة جواب
     def save(self, *args, **kwargs):
         if self.answer and self.answer.strip():  # إذا تم كتابة جواب وليس فارغاً
@@ -37,4 +36,4 @@ class Inquiry(models.Model):
         super().save(*args, **kwargs)
 
     def str(self):
-        return f"{self.name or 'Anonymous'} - ({self.get_sector_display()}) - {self.status}"
+        return f"{self.name or 'Anonymous'}  - {self.status}"

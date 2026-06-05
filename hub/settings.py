@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'accounts',
     'comments',
+    'media_gallery',
 ]
 
 MIDDLEWARE = [

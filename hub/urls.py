@@ -25,6 +25,8 @@ urlpatterns = [
     path('api/', include('accounts.urls')),
     path('api/', include('comments.urls')),
     path('api/', include('media_gallery.urls')),
+    path('api/', include('dashboard.urls')),
+
 
 
     

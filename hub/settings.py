@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'accounts',
     'comments',
     'media_gallery',
+    'dashboard',
 ]
 
 MIDDLEWARE = [
@@ -203,7 +204,7 @@ SIMPLE_JWT = {
     'ALGORITHM': 'HS256',
     'SIGNING_KEY': SECRET_KEY,
 }
-
+""""
 REST_FRAMEWORK = {
     'DEFAULT_THROTTLE_CLASSES': [
         'rest_framework.throttling.AnonRateThrottle', # للمستخدمين غير المسجلين
@@ -212,7 +213,7 @@ REST_FRAMEWORK = {
         'anon': '5/day', # يسمح بـ 5 رسائل فقط في اليوم لكل شخص (يمكنك تغييرها)
     }
 }
-
+"""
 
 #الربط الذي سيتخدمه الفرونت اند للوصول للصورة 
 MEDIA_URL ='api/media/'

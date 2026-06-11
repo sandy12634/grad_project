@@ -1,11 +1,22 @@
 from rest_framework import serializers
 from .models import User
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+# استيراد أداة توليد التوكنز يدوياً
+from rest_framework_simplejwt.tokens import RefreshToken 
+
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     """تخصيص البيانات العائدة عند تسجيل الدخول لتشمل تفاصيل الدور والقطاع"""
     def validate(self, attrs):
         data = super().validate(attrs)
+        
+        # توليد التوكنز يدويًا للمستخدم الحالي للتأكد من وجودها
+        refresh = RefreshToken.for_user(self.user)
+        
+        # حقن التوكنز في قاموس البيانات للتأكد من ظهورها في الصورة
+        data['refresh'] = str(refresh)
+        data['accessToken'] = str(refresh.access_token)
+        
         
         # إضافة بيانات المستخدم المخصصة للرد (Response)
         # تساعد هذه البيانات الفرونت إند في معرفة صلاحيات المستخدم فوراً

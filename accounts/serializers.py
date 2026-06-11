@@ -14,8 +14,8 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         refresh = RefreshToken.for_user(self.user)
         
         # حقن التوكنز في قاموس البيانات للتأكد من ظهورها في الصورة
-        data['refresh'] = str(refresh)
-        data['accessToken'] = str(refresh.access_token)
+        #data['refresh'] = str(refresh)
+       # data['accessToken'] = str(refresh.access_token)
         
         
         # إضافة بيانات المستخدم المخصصة للرد (Response)
@@ -26,6 +26,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
             'full_name': f"{self.user.first_name} {self.user.last_name}".strip(),
             'role': self.user.role,
             'sector': self.user.sector,
+            'accessToken': str(refresh.access_token),
         }
         return data
 

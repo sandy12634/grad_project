@@ -191,29 +191,28 @@ AUTH_USER_MODEL = "accounts.User"
 
 
 
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
-}
-
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(days=1), # مدة صلاحية التوكن (للتطوير جعلناها يوماً)
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=365), # مدة صلاحية التوكن (للتطوير جعلناها يوماً)
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=365),
     'ROTATE_REFRESH_TOKENS': False,
     'ALGORITHM': 'HS256',
     'SIGNING_KEY': SECRET_KEY,
 }
-""""
+
 REST_FRAMEWORK = {
-    'DEFAULT_THROTTLE_CLASSES': [
-        'rest_framework.throttling.AnonRateThrottle', # للمستخدمين غير المسجلين
-    ],
-    'DEFAULT_THROTTLE_RATES': {
-        'anon': '5/day', # يسمح بـ 5 رسائل فقط في اليوم لكل شخص (يمكنك تغييرها)
-    }
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    
+   # 'DEFAULT_THROTTLE_CLASSES': [
+   #     'rest_framework.throttling.AnonRateThrottle', # للمستخدمين غير المسجلين
+   # ],
+    #'DEFAULT_THROTTLE_RATES': {
+    #    'anon': '5/day', # يسمح بـ 5 رسائل فقط في اليوم لكل شخص (يمكنك تغييرها)
+   # }
+   
 }
-"""
+
 
 #الربط الذي سيتخدمه الفرونت اند للوصول للصورة 
 MEDIA_URL ='api/media/'
@@ -223,7 +222,7 @@ MEDIA_ROOT= os.path.join(BASE_DIR, 'media/')
 
 
 CORS_ALLOW_ALL_ORIGINS =True
-
+CORS_ALLOW_CREDENTIALS =True
 
 
 

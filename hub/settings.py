@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'content',
     'rest_framework', 
+    'rest_framework_simplejwt',
     'corsheaders',
     'accounts',
     'comments',
@@ -85,26 +86,26 @@ WSGI_APPLICATION = 'hub.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
-
+"""""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+"""
 
-
-""""" 
+ 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'homshub_new',      # The name of the DB you created in Postgres
+        'NAME': 'homs_hub',      # The name of the DB you created in Postgres
         'USER': 'postgres',      # Your database username
         'PASSWORD': '1234',  # Your database password
         'HOST': '127.0.0.1',         # Set to server IP for remote databases
-        'PORT': '5432',              # Default PostgreSQL port
+        'PORT': '5434',              # Default PostgreSQL port
     }}
-"""
+
 
 """
 DATABASES = {

@@ -86,26 +86,32 @@ WSGI_APPLICATION = 'hub.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
-"""""
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-"""
 
  
+ 
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'homs_hub',      # The name of the DB you created in Postgres
-        'USER': 'postgres',      # Your database username
-        'PASSWORD': '1234',  # Your database password
-        'HOST': '127.0.0.1',         # Set to server IP for remote databases
-        'PORT': '5434',              # Default PostgreSQL port
+        'NAME': 'neondb',      # The name of the DB you created in Postgres
+        'USER': 'neondb_owner',      # Your database username
+        'PASSWORD': 'npg_qjNuZDFV7t6H',  # Your database password
+        'HOST': 'ep-plain-night-atjkattr-pooler.c-9.us-east-1.aws.neon.tech',         # Set to server IP for remote databases
+        'PORT': '5432',              # Default PostgreSQL port
+         'OPTIONS': {
+            'sslmode': 'require',
+            
+        },
     }}
 
+"""
 
 """
 DATABASES = {

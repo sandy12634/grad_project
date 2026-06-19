@@ -65,7 +65,7 @@ class NewsViewSet(SectorFilteredViewSet):
 
         # 2. الكود الحالي تبعك (يلي بيفحص الـ role والـ sector)
         # انقليه لهون متل ما هو تماماً مشان يشتغل للأدمن بأمان
-        if hasattr(user, 'role') and user.role == 'super_admin':
+        if hasattr(user, 'role') and user.role == 'superadmin':
             return News.objects.all()
 
 class HistoryViewSet(SectorFilteredViewSet):
@@ -85,7 +85,7 @@ class HistoryViewSet(SectorFilteredViewSet):
 
         # 2. الكود الحالي تبعك (يلي بيفحص الـ role والـ sector)
         # انقليه لهون متل ما هو تماماً مشان يشتغل للأدمن بأمان
-        if hasattr(user, 'role') and user.role == 'super_admin':
+        if hasattr(user, 'role') and user.role == 'superadmin':
             return History.objects.all()
     
 
@@ -106,7 +106,7 @@ class ServiceViewSet(SectorFilteredViewSet):
 
         # 2. الكود الحالي تبعك (يلي بيفحص الـ role والـ sector)
         # انقليه لهون متل ما هو تماماً مشان يشتغل للأدمن بأمان
-        if hasattr(user, 'role') and user.role == 'super_admin':
+        if hasattr(user, 'role') and user.role == 'superadmin':
             return Service.objects.all()
     
 
@@ -127,7 +127,7 @@ class FacilityViewSet(SectorFilteredViewSet):
 
         # 2. الكود الحالي تبعك (يلي بيفحص الـ role والـ sector)
         # انقليه لهون متل ما هو تماماً مشان يشتغل للأدمن بأمان
-        if hasattr(user, 'role') and user.role == 'super_admin':
+        if hasattr(user, 'role') and user.role == 'superadmin':
             return Facility.objects.all()
 
 class EventViewSet(SectorFilteredViewSet):
@@ -147,5 +147,5 @@ class EventViewSet(SectorFilteredViewSet):
 
         # 2. الكود الحالي تبعك (يلي بيفحص الـ role والـ sector)
         # انقليه لهون متل ما هو تماماً مشان يشتغل للأدمن بأمان
-        if hasattr(user, 'role') and user.role == 'super_admin':
+        if hasattr(user, 'role') and user.role == 'superadmin':
             return Event.objects.all()

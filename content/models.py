@@ -37,8 +37,8 @@ class Service(BaseContent):
 
 class Facility(BaseContent):
     image = models.ImageField(upload_to='facilities/', null=True, blank=True)
-    lat = models.FloatField()
-    lng = models.FloatField()
+    lat = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
+    lng = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
     address_ar = models.CharField(max_length=255)
     address_en = models.CharField(max_length=255)
 

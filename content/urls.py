@@ -15,6 +15,7 @@ router.register("services", ServiceViewSet)
 router.register("facilities", FacilityViewSet)
 router.register("events", EventViewSet)
 
+
 urlpatterns = [
     path ('',include(router.urls)),
 ]

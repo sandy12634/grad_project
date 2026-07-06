@@ -19,13 +19,18 @@ from django.urls import path , include
 from django.conf import settings
 from django.conf.urls.static import static 
 
+from django.contrib import admin
+from django.urls import path , include
+from django.conf import settings
+from django.conf.urls.static import static 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('content.urls')),
     path('api/', include('accounts.urls')),
     path('api/', include('comments.urls')),
     path('api/', include('media_gallery.urls')),
-    path('api/', include('dashboard.urls')),
+    path('api/dashboard', include('dashboard.urls')),
 
 
 

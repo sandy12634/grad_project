@@ -1,10 +1,11 @@
-from rest_framework.routers import DefaultRouter
+from django.db import router
 from django.urls import path, include
-from .views import InquiryViewSet
 
-router = DefaultRouter()
-router.register('faqs', InquiryViewSet, basename='inquiry')
-
+from rest_framework.routers import DefaultRouter
+from .views import InquiryViewSet  # تأكدي من اسم الـ ViewSet الخاص بكِ
 urlpatterns = [
-    path('', include(router.urls)),
+# 1. إنشاء الـ Router وتسجيل الـ ViewSet
+path('faq/', InquiryViewSet.as_view(), name='create-inquiry'),
+
+path('faq/<int:pk>/', InquiryViewSet.as_view(), name='faq-detail'),
 ]

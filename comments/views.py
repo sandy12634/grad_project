@@ -1,17 +1,18 @@
-from rest_framework import viewsets, filters
+from rest_framework import viewsets, permissions
+from rest_framework.exceptions import PermissionDenied
 from .models import Inquiry
 from .serializers import InquirySerializer
-from content.views import SectorFilteredViewSet # استيراد الكلاس الأب
+#from .permissions import IsSuperAdminOnly
+from rest_framework import generics
 
-class InquiryViewSet(SectorFilteredViewSet): # نربطه مع الأب لنأخذ الصلاحيات وفلترة القطاع
+class InquiryViewSet(generics.ListCreateAPIView):
     queryset = Inquiry.objects.all().order_by("-id")
     serializer_class = InquirySerializer
+    permission_classes = [permissions.AllowAny]
     
     
     
-    def get_queryset(self):
-        queryset = super().get_queryset() # يطبق فلترة القطاع أولاً
-        status = self.request.query_params.get('status')
-        if status:
-            queryset = queryset.filter(status=status) # استبدل status باسم الحقل الصحيح في الموديل
-        return queryset
+    def perform_create(self, serializer):
+       
+            # إذا كان زائر عام، يتم الحفظ بدون ربطه بمستخدم (تأكدي أن حقل user في الموديل يقبل null=True)
+            serializer.save()
